@@ -11,6 +11,7 @@
         }
     },
     "bin": "xfel.exe",
+    "notes": "need install driver, see `~/scoop/xfel/current/Drivers`",
     "checkver": {
         "url": "https://github.com/xboot/xfel",
         "regex": "/releases/tag/v(.*)\">"
