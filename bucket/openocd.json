@@ -1,13 +1,13 @@
 {
-    "version": "0.11.0-4",
+    "version": "0.11.0-5",
     "description": "The xPack OpenOCD",
     "homepage": "https://github.com/xpack-dev-tools/openocd-xpack",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/xpack-dev-tools/openocd-xpack/releases/download/v0.11.0-4/xpack-openocd-0.11.0-4-win32-x64.zip",
-            "hash": "d380d3c1fecf8ac1eb7b5ed0f63a6fa329f4c830a0a94cdad6032fcd2ffa3a36",
-            "extract_dir": "xpack-openocd-0.11.0-4"
+            "url": "https://github.com/xpack-dev-tools/openocd-xpack/releases/download/v0.11.0-5/xpack-openocd-0.11.0-5-win32-x64.zip",
+            "hash": "1d062e422e71f56bb490a4713440b8a6da09e25e314c39ed63a66bd6e7a62ef4",
+            "extract_dir": "xpack-openocd-0.11.0-5"
         }
     },
     "bin": "bin/openocd.exe",
