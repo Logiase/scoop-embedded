@@ -1,6 +1,6 @@
 param(
     # overwrite upstream param
-    [String]$upstream = "<username>/<bucketname>:main"
+    [String]$upstream = "Logiase/scoop-embedded:master"
 )
 
 if(!$env:SCOOP_HOME) { $env:SCOOP_HOME = Resolve-Path (scoop prefix scoop) }
