@@ -1,0 +1,53 @@
+{
+    "version": "4.3.4",
+    "description": "Espressif IoT Development Framework. Official development framework for Espressif SoCs.",
+    "homepage": "https://github.com/espressif/esp-idf",
+    "license": "Apache-2.0",
+    "notes": "",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/espressif/esp-idf/releases/download/v4.3.4/esp-idf-v4.3.4.zip#/dl.zip_",
+            "hash": "7e42394f642935334b462fb2b5912f2f7daa22a6884fd8f8bb054c16094dfd3b"
+        },
+        "32bit": {
+            "url": "https://github.com/espressif/esp-idf/releases/download/v4.3.4/esp-idf-v4.3.4.zip#/dl.zip_",
+            "hash": "7e42394f642935334b462fb2b5912f2f7daa22a6884fd8f8bb054c16094dfd3b"
+        }
+    },
+    "pre_install": [
+        "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"$dir\\dl.zip_\", \"-o$dir\") | Out-Null",
+        "Rename-Item \"$dir\\esp-idf-v$version\" \"esp-idf\" | Out-Null",
+        "Remove-Item \"$dir\\dl.zip_\" -Force -Recurse",
+        "Copy-Item -Path \"$bucketsdir\\scoop-embedded\\scripts\\idf_activate.ps1\" -Destination \"$dir/idf_activate.ps1\""
+    ],
+    "post_install": [
+        "Invoke-ExternalCommand python -ArgumentList @('-m', 'venv', \"$dir/esp-idf-pyenv\") | Out-Null",
+        ". $dir/esp-idf-pyenv/Scripts/Activate.ps1",
+        "Invoke-ExternalCommand python -ArgumentList @('-m', 'pip', 'install', '--upgrade', 'pip') | Out-Null",
+        "Invoke-ExternalCommand pip -ArgumentList @('install', 'wheel') | Out-Null",
+        "Invoke-ExternalCommand pip -ArgumentList @('install', '-r', \"$dir/esp-idf/requirements.txt\") | Out-Null",
+        "deactivate"
+    ],
+    "env_set": {
+        "IDF_PATH": "$dir/esp-idf",
+        "IDF_PYTHON_ENV_PATH": "$dir/esp-idf-pyenv"
+    },
+    "depends": [
+        "python",
+        "cmake",
+        "ninja",
+        "ccache",
+        "git",
+        "7zip19.00-helper"
+    ],
+    "bin": [
+        [
+            "idf_activate.ps1",
+            "idf_activate"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/espressif/esp-idf",
+        "regex": "/release/tag/v(.*)\">"
+    }
+}
